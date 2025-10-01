@@ -19,15 +19,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className="border-b border-border bg-card backdrop-blur-sm sticky top-0 z-10 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-gradient-primary rounded-lg shadow-glow">
               <Box className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">Online 3D Viewer</h1>
-              <p className="text-xs text-muted-foreground">Visualize and explore 3D models</p>
+              <h1 className="text-xl font-bold text-foreground">Aerial Insight Pro</h1>
+              <p className="text-xs text-muted-foreground">3D Model Viewer for Aerial Inspections</p>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 border-t border-border bg-card/30 backdrop-blur-sm">
+      <footer className="mt-12 border-t border-border bg-card">
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-sm text-muted-foreground">
             <p>Powered by <span className="text-primary font-semibold">Online3DViewer</span></p>

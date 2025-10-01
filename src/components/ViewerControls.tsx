@@ -36,9 +36,9 @@ export const ViewerControls = ({ onLoadFromUrl }: ViewerControlsProps) => {
     <Card className="p-6 bg-card border-border shadow-elevated">
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">3D Model Viewer</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-2">Model Viewer</h2>
           <p className="text-sm text-muted-foreground">
-            Upload or load 3D models from various formats
+            Upload aerial inspection models or load from URL
           </p>
         </div>
 
