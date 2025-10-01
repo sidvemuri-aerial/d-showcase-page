@@ -11,6 +11,8 @@ export const Viewer3D = ({ onModelLoad }: Viewer3DProps) => {
   const viewerRef = useRef<OV.EmbeddedViewer | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const getViewer = () => viewerRef.current;
+
   useEffect(() => {
     if (!viewerContainerRef.current) return;
 
@@ -91,6 +93,12 @@ export const Viewer3D = ({ onModelLoad }: Viewer3DProps) => {
       />
     </div>
   );
+};
+
+export { Viewer3D as default };
+export type { Viewer3DProps };
+export const getViewerInstance = (ref: React.RefObject<{ getViewer: () => OV.EmbeddedViewer | null }>) => {
+  return ref.current?.getViewer();
 };
 
 

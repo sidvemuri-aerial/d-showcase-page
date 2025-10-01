@@ -1,10 +1,28 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Viewer3D } from "@/components/Viewer3D";
 import { ViewerControls } from "@/components/ViewerControls";
+import { CameraControls } from "@/components/CameraControls";
+import { MeasurementPanel } from "@/components/MeasurementPanel";
+import { useViewerControls } from "@/hooks/useViewerControls";
 import { Box } from "lucide-react";
+import * as OV from "online-3d-viewer";
 
 const Index = () => {
   const [modelLoaded, setModelLoaded] = useState(false);
+  const viewerRef = useRef<OV.EmbeddedViewer | null>(null);
+  const [measurements, setMeasurements] = useState<any>(null);
+  
+  const { setCameraView, toggleAutoRotate, isAutoRotating } = useViewerControls(viewerRef.current);
+
+  const handleModelLoad = useCallback(() => {
+    setModelLoaded(true);
+    // Mock measurements for now
+    setMeasurements({
+      dimensions: { x: 15.5, y: 8.2, z: 12.3 },
+      volume: 1567.89,
+      surfaceArea: 845.32,
+    });
+  }, []);
 
   const handleLoadFromUrl = async (url: string) => {
     // This will be handled by the Viewer3D component
@@ -37,14 +55,24 @@ const Index = () => {
       <main className="container mx-auto px-4 py-6">
         <div className="grid lg:grid-cols-[350px_1fr] gap-6">
           {/* Controls Panel */}
-          <aside className="lg:sticky lg:top-24 h-fit">
+          <aside className="lg:sticky lg:top-24 h-fit space-y-4">
             <ViewerControls onLoadFromUrl={handleLoadFromUrl} />
+            {modelLoaded && (
+              <>
+                <CameraControls 
+                  onViewChange={setCameraView}
+                  onToggleRotate={toggleAutoRotate}
+                  isRotating={isAutoRotating}
+                />
+                <MeasurementPanel measurements={measurements} />
+              </>
+            )}
           </aside>
 
           {/* Viewer */}
           <section className="space-y-4">
             <div className="bg-card rounded-lg border border-border shadow-elevated overflow-hidden">
-              <Viewer3D onModelLoad={() => setModelLoaded(true)} />
+              <Viewer3D onModelLoad={handleModelLoad} />
             </div>
 
             {!modelLoaded && (
