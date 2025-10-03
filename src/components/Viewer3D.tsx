@@ -20,8 +20,8 @@ export const Viewer3D = ({ onModelLoad }: Viewer3DProps) => {
     const parentDiv = viewerContainerRef.current;
     
     viewerRef.current = new OV.EmbeddedViewer(parentDiv, {
-      backgroundColor: new OV.RGBAColor(242, 242, 242, 255),
-      defaultColor: new OV.RGBColor(200, 200, 200),
+      backgroundColor: new OV.RGBAColor(255, 255, 255, 255),
+      defaultColor: new OV.RGBColor(230, 230, 230),
       edgeSettings: new OV.EdgeSettings(false, new OV.RGBColor(0, 0, 0), 1),
     });
 
